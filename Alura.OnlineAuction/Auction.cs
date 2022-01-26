@@ -11,6 +11,7 @@ namespace Alura.OnlineAuction
         public IList<Bid> bids;
         public IEnumerable<Bid> Bids => bids;
         public string Item { get; }
+        public Bid Winner { get; set; }
 
         public Auction(string item)
         {
@@ -36,7 +37,7 @@ namespace Alura.OnlineAuction
 
         public void FinishTrading()
         {
-
+            Winner = bids.Last();           
         }
     }
 

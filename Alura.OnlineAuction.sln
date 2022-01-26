@@ -7,7 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{80CA6753-C6A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F24BEC51-C026-4F80-A3C5-B9F67666F222}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alura.OnlineAuction", "Alura.OnlineAuction\Alura.OnlineAuction.csproj", "{5D68CA82-AD8B-4769-9FDD-4988FC716B81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alura.OnlineAuction", "Alura.OnlineAuction\Alura.OnlineAuction.csproj", "{5D68CA82-AD8B-4769-9FDD-4988FC716B81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alura.OnlineAuction.ConsoleApp", "Alura.OnlineAuction.ConsoleApp\Alura.OnlineAuction.ConsoleApp.csproj", "{F6170E1D-BD8F-4FFD-BB66-17199F551FAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,12 +21,17 @@ Global
 		{5D68CA82-AD8B-4769-9FDD-4988FC716B81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D68CA82-AD8B-4769-9FDD-4988FC716B81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D68CA82-AD8B-4769-9FDD-4988FC716B81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6170E1D-BD8F-4FFD-BB66-17199F551FAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6170E1D-BD8F-4FFD-BB66-17199F551FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6170E1D-BD8F-4FFD-BB66-17199F551FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6170E1D-BD8F-4FFD-BB66-17199F551FAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5D68CA82-AD8B-4769-9FDD-4988FC716B81} = {80CA6753-C6A1-4635-88DD-DC9D1C576C24}
+		{F6170E1D-BD8F-4FFD-BB66-17199F551FAC} = {F24BEC51-C026-4F80-A3C5-B9F67666F222}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C8F01E93-2C94-475A-8EEE-122E0FC1415D}

@@ -23,11 +23,6 @@ namespace Alura.OnlineAuction
                 throw new Exception("Valor não pode ser menor ou igual a zero");
             }
 
-            if(value < Value)
-            {
-                throw new Exception("Valor não pode ser menor que o valor do ultimo lance");
-            }
-
             Client = client;
             Value = value;
         }
