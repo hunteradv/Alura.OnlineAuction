@@ -14,6 +14,11 @@ namespace Alura.OnlineAuction
 
         public Auction(string item)
         {
+            if(item is null)
+            {
+                throw new Exception("Item não pode ser nulo");
+            }
+
             Item = item;
             bids = new List<Bid>();
         }
