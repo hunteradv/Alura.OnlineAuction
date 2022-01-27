@@ -37,7 +37,7 @@ namespace Alura.OnlineAuction
 
         public void FinishTrading()
         {
-            Winner = bids.Last();           
+            Winner = Bids.OrderBy(x => x.Value).Last();          
         }
     }
 
