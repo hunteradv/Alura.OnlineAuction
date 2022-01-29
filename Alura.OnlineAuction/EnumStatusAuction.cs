@@ -8,6 +8,7 @@ namespace Alura.OnlineAuction
 {
     public enum EnumStatusAuction
     {
+        WaitingToOpen,
         Open,
         Closed
     }

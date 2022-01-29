@@ -10,16 +10,27 @@ namespace Alura.OnlineAuction.Tests
         [InlineData(2000 ,new double[] {1000, 1100, 2000, 1200})]
         [InlineData(800 ,new double[] {800})]
 
-        public static void ReturnMaxValueWhenHaveAtLeastOneBid(double expectedValue, double[] oferts)
+        public static void ReturnMaxValueWhenHaveAtLeastOneBid(double expectedValue, double[] bids)
         {
             //arranje - cenário
             var auctionTest = new Auction("Pintura Van Gogh");
 
             var client1 = new Client("Cliente teste", auctionTest);
+            var client2 = new Client("Cliente teste 2", auctionTest);
 
-            foreach(var ofert in oferts)
+            auctionTest.StartAuction();
+
+            for (var i = 0; i < bids.Length; i++)
             {
-                auctionTest.ReceiveBid(client1, ofert);
+                var value = bids[i];
+                if (i % 2 == 0)
+                {
+                    auctionTest.ReceiveBid(client1, value);
+                }
+                else
+                {
+                    auctionTest.ReceiveBid(client2, value);
+                }
             }
 
             //Act - método sob teste
@@ -35,6 +46,8 @@ namespace Alura.OnlineAuction.Tests
             //arranje - cenário
             //Dado leilão com nenhuma lance
             var auctionTest = new Auction("Pintura Van Gogh");
+
+            auctionTest.StartAuction();
 
             //Act - método sob teste
             //Quando o leilão termina e tenta decidir um vencedor
