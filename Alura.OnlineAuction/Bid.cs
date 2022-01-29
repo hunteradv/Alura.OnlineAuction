@@ -13,16 +13,6 @@ namespace Alura.OnlineAuction
 
         public Bid(Client client, double value)
         {
-            if(client is null)
-            {
-                throw new Exception("Cliente não pode ser nulo");
-            }
-
-            if(value <= 0)
-            {
-                throw new Exception("Valor não pode ser menor ou igual a zero");
-            }
-
             Client = client;
             Value = value;
         }

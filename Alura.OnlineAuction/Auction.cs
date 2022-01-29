@@ -12,6 +12,7 @@ namespace Alura.OnlineAuction
         public IEnumerable<Bid> Bids => bids;
         public string Item { get; }
         public Bid Winner { get; set; }
+        public EnumStatusAuction Status { get; private set; }
 
         public Auction(string item)
         {
@@ -27,17 +28,21 @@ namespace Alura.OnlineAuction
 
         public void ReceiveBid(Client client, double value)
         {
-            bids.Add(new Bid(client, value));
+            if (Status == EnumStatusAuction.Open)
+            {
+                bids.Add(new Bid(client, value));
+            }
         }
 
-        public void StartTrading()
+        public void StartAuction()
         {
 
         }
 
-        public void FinishTrading()
+        public void FinishAuction()
         {
-            Winner = Bids.OrderBy(x => x.Value).Last();          
+            Winner = Bids.DefaultIfEmpty(new Bid(null, 0)).OrderBy(x => x.Value).LastOrDefault();
+            Status = EnumStatusAuction.Closed;
         }
     }
 

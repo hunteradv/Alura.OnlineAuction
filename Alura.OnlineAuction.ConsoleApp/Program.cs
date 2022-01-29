@@ -25,7 +25,7 @@ static void AuctionWithMultipleBids()
     client2.Auction.ReceiveBid(client2, 1100);
     client3.Auction.ReceiveBid(client3, 500);
 
-    auctionTest.FinishTrading();
+    auctionTest.FinishAuction();
 
     var expectedValue = 1100.0;
     var valueObtained = auctionTest.Winner.Value;
@@ -42,7 +42,7 @@ static void AuctionWithOneBid()
 
     client1.Auction.ReceiveBid(client1, 1000);
 
-    auctionTest.FinishTrading();
+    auctionTest.FinishAuction();
 
     var expectedValue = 1000;
     var valueObtained = auctionTest.Winner.Value;
