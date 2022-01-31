@@ -48,6 +48,11 @@ namespace Alura.OnlineAuction
 
         public void FinishAuction()
         {
+            if(Status != EnumStatusAuction.Open)
+            {
+                throw new InvalidOperationException("Não é possível encerrar um leilão sem te-lo iniciado");
+            }
+
             Winner = Bids.DefaultIfEmpty(new Bid(null, 0)).OrderBy(x => x.Value).LastOrDefault();
             Status = EnumStatusAuction.Closed;
         }

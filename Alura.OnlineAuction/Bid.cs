@@ -13,6 +13,10 @@ namespace Alura.OnlineAuction
 
         public Bid(Client client, double value)
         {
+            if(value < 0)
+            {
+                throw new ArgumentException("Valor do lance precisa ser maior que zero");
+            }
             Client = client;
             Value = value;
         }

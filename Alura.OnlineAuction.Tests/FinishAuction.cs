@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System;
+using Xunit;
 
 namespace Alura.OnlineAuction.Tests
 {
@@ -61,6 +62,19 @@ namespace Alura.OnlineAuction.Tests
             //Então o valor esperado é zero
             //E não há vencedor (null)
             Assert.Equal(expectedValue, valueObtained);
+        }
+
+        [Fact]
+        public static void ThrowInvalidOperationExceptionWhenFinishAuctionWithoutItStarted()
+        {
+            //arranje
+            //dado leilão sem iniciar
+            var auction = new Auction("Auction Test");
+
+            //assert
+            Assert.Throws<InvalidOperationException>(
+                () => auction.FinishAuction()
+            );
         }
     }
 }
