@@ -14,8 +14,9 @@ namespace Alura.OnlineAuction
         public Bid Winner { get; set; }
         public EnumStatusAuction Status { get; private set; }
         public Client LastClient { get; set; }
+        public double DestinyValue { get; set; }
 
-        public Auction(string item)
+        public Auction(string item, double destinyValue = 0)
         {
             if(item is null)
             {
@@ -25,6 +26,7 @@ namespace Alura.OnlineAuction
             Item = item;
             bids = new List<Bid>();
             Status = EnumStatusAuction.WaitingToOpen;
+            DestinyValue = destinyValue;
         }
 
         private bool NewBidIsAccepted(Client client, double value)
@@ -53,7 +55,17 @@ namespace Alura.OnlineAuction
                 throw new InvalidOperationException("Não é possível encerrar um leilão sem te-lo iniciado");
             }
 
-            Winner = Bids.DefaultIfEmpty(new Bid(null, 0)).OrderBy(x => x.Value).LastOrDefault();
+            //modalidade oferta superior mais próxima
+            if(DestinyValue > 0)
+            {
+                Winner = Bids.DefaultIfEmpty(new Bid(null, 0)).Where(x => x.Value > DestinyValue).OrderBy(x => x.Value).LastOrDefault();
+            }
+            //modalidade maior valor
+            else
+            {
+                Winner = Bids.DefaultIfEmpty(new Bid(null, 0)).OrderBy(x => x.Value).LastOrDefault();
+            }
+
             Status = EnumStatusAuction.Closed;
         }
     }
