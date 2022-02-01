@@ -14,8 +14,8 @@ namespace Alura.OnlineAuction.Tests
         public static void ReturnMaxValueWhenHaveAtLeastOneBid(double destinyValue, double expectedValue, double[] bids)
         {
             //arranje - cenário
-            var IassessmentModality = new BidMaxValue(destinyValue);
-            var auctionTest = new Auction("Pintura Van Gogh");
+            var modality = new NearestToDestinyValue(destinyValue);
+            var auctionTest = new Auction("Pintura Van Gogh", modality);
 
             var client1 = new Client("Cliente teste", auctionTest);
             var client2 = new Client("Cliente teste 2", auctionTest);
@@ -46,8 +46,10 @@ namespace Alura.OnlineAuction.Tests
         public static void ReturnZeroWhenNoHaveBids()
         {
             //arranje - cenário
-            //Dado leilão com nenhuma lance
-            var auctionTest = new Auction("Pintura Van Gogh");
+            //Dado leilão com nenhum lance
+            var modality = new BidMaxValue();
+
+            var auctionTest = new Auction("Pintura Van Gogh", modality);
 
             auctionTest.StartAuction();
 
@@ -70,7 +72,8 @@ namespace Alura.OnlineAuction.Tests
         {
             //arranje
             //dado leilão sem iniciar
-            var auction = new Auction("Auction Test");
+            var modality = new BidMaxValue();
+            var auction = new Auction("Auction Test", modality);
 
             //assert
             Assert.Throws<InvalidOperationException>(
@@ -82,7 +85,7 @@ namespace Alura.OnlineAuction.Tests
         [InlineData(1000, 1100, new double[]{100, 600, 970, 1100})]
         public static void ReturnValueCloserToDestinyValue(double destinyValue, double expectedValue, double[]bids)
         {
-            var IassessmentModality = new NearestToDestinyValue(destinyValue);
+            var modality = new NearestToDestinyValue(destinyValue);
 
             var auction = new Auction("Leilão teste", modality);
 

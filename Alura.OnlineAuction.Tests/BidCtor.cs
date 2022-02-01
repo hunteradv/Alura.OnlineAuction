@@ -8,8 +8,9 @@ namespace Alura.OnlineAuction.Tests
         [Fact]
         public static void ThrowArgumentExceptionWhenReceivedBidWithNegativeValue()
         {
+            var modality = new BidMaxValue();
             //arranje
-            var auction = new Auction("Auction Test");
+            var auction = new Auction("Auction Test", modality);
 
             var valorNegativo = -1;
 

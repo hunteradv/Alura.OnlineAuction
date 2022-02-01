@@ -11,7 +11,9 @@ namespace Alura.OnlineAuction.Tests
         {
             //arranje - cenário
             //Dado leilão com nenhuma lance
-            var auctionTest = new Auction("Pintura Van Gogh");
+            var modality = new BidMaxValue();
+
+            var auctionTest = new Auction("Pintura Van Gogh", modality);
 
             var client1 = new Client("Cliente teste", auctionTest);
             var client2 = new Client("Cliente teste 2", auctionTest);
@@ -51,7 +53,8 @@ namespace Alura.OnlineAuction.Tests
         {
             //assert
             //leilão é criado e até o momento sem lances
-            var auctionTest = new Auction("Pintura Van Gogh");
+            var modality = new BidMaxValue();
+            var auctionTest = new Auction("Pintura Van Gogh", modality);
             var client1 = new Client("Cliente teste", auctionTest);
 
             //act
@@ -76,8 +79,9 @@ namespace Alura.OnlineAuction.Tests
         {
             //arranje - cenário
             //Dado leilão com um lance do cliente 1
+            var modality = new BidMaxValue();
 
-            var auction = new Auction("Leilão teste");
+            var auction = new Auction("Leilão teste", modality);
             var client1 = new Client("Cliente teste", auction);
 
             auction.StartAuction();

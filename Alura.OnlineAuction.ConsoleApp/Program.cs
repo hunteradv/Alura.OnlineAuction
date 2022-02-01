@@ -15,7 +15,8 @@ static void VerifyAuction(double expected, double obtained)
 
 static void AuctionWithMultipleBids()
 {
-    var auctionTest = new Auction("Pintura Van Gogh");
+    var modality = new BidMaxValue();
+    var auctionTest = new Auction("Pintura Van Gogh", modality);
 
     var client1 = new Client("Cliente 1", auctionTest);
     var client2 = new Client("Cliente 2", auctionTest);
@@ -36,7 +37,9 @@ static void AuctionWithMultipleBids()
 
 static void AuctionWithOneBid()
 {
-    var auctionTest = new Auction("Pintura Van Gogh");
+    var modality = new BidMaxValue();
+
+    var auctionTest = new Auction("Pintura Van Gogh", modality);
 
     var client1 = new Client("Cliente 1", auctionTest);
 
