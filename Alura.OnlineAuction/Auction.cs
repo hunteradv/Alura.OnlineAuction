@@ -8,38 +8,39 @@ namespace Alura.OnlineAuction
 {
     public class Auction
     {
-        public IList<Bid> bids;
-        public IEnumerable<Bid> Bids => bids;
+        public IList<Bid> _bids;
+        public IAssessmentModality _avaluator;
+        public Client _lastClient;
+
+        public IEnumerable<Bid> Bids => _bids;
         public string Item { get; }
-        public Bid Winner { get; set; }
+        public Bid Winner { get; private set; }
         public EnumStatusAuction Status { get; private set; }
-        public Client LastClient { get; set; }
-        public IAssessmentModality Avaluator { get; private set; }
 
         public Auction(string item, IAssessmentModality avaluator)
         {
-            if(item is null)
+            if(item == null)
             {
                 throw new Exception("Item não pode ser nulo");
             }
 
             Item = item;
-            bids = new List<Bid>();
+            _bids = new List<Bid>();
             Status = EnumStatusAuction.WaitingToOpen;
-            Avaluator = avaluator;
+            _avaluator = avaluator;
         }
 
         private bool NewBidIsAccepted(Client client, double value)
         {
-            return (Status == EnumStatusAuction.Open) && (client != LastClient);
+            return (Status == EnumStatusAuction.Open) && (client != _lastClient);
         }
 
         public void ReceiveBid(Client client, double value)
         {
             if (NewBidIsAccepted(client, value))
             {
-                bids.Add(new Bid(client, value));
-                LastClient = client;   
+                _bids.Add(new Bid(client, value));
+                _lastClient = client;   
             }
         }
 
@@ -55,7 +56,7 @@ namespace Alura.OnlineAuction
                 throw new InvalidOperationException("Não é possível encerrar um leilão sem te-lo iniciado");
             }
 
-            Winner = Avaluator.Evaluates(this);
+            Winner = _avaluator.Evaluates(this);
 
             Status = EnumStatusAuction.Closed;
         }

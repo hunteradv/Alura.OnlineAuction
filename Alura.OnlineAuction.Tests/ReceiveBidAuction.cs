@@ -9,8 +9,8 @@ namespace Alura.OnlineAuction.Tests
         [InlineData(2, new double[] { 100, 400 })]
         public void NotAllowNewBidsWhenTheAuctionEnds(double quantityExpected, double[]bids)
         {
-            //arranje - cenário
-            //Dado leilão com nenhuma lance
+            //arranje
+            //Dado leilão com nenhum lance
             var modality = new BidMaxValue();
 
             var auctionTest = new Auction("Pintura Van Gogh", modality);

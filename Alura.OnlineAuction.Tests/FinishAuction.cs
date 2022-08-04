@@ -45,7 +45,7 @@ namespace Alura.OnlineAuction.Tests
         [Fact]
         public static void ReturnZeroWhenNoHaveBids()
         {
-            //arranje - cenário
+            //arranje
             //Dado leilão com nenhum lance
             var modality = new BidMaxValue();
 
@@ -53,7 +53,7 @@ namespace Alura.OnlineAuction.Tests
 
             auctionTest.StartAuction();
 
-            //Act - método sob teste
+            //Act
             //Quando o leilão termina e tenta decidir um vencedor
             auctionTest.FinishAuction();
 
@@ -96,7 +96,7 @@ namespace Alura.OnlineAuction.Tests
 
             for(int i = 0; i < bids.Length; i++)
             {
-                if(i%2 == 0)
+                if(i % 2 == 0)
                 {
                     auction.ReceiveBid(client1, bids[i]);
                 }

@@ -17,7 +17,7 @@ namespace Alura.OnlineAuction
 
         public Bid Evaluates(Auction auction)
         {
-            return auction.Bids.DefaultIfEmpty(new Bid(null, 0)).Where(x => x.Value > DestinyValue).OrderBy(x => x.Value).LastOrDefault();
+            return auction.Bids.DefaultIfEmpty(new Bid(null, 0)).Where(x => x.Value > DestinyValue).OrderBy(x => x.Value).FirstOrDefault();
         }
     }
 }

@@ -15,6 +15,7 @@ static void VerifyAuction(double expected, double obtained)
 
 static void AuctionWithMultipleBids()
 {
+    //arranje
     var modality = new BidMaxValue();
     var auctionTest = new Auction("Pintura Van Gogh", modality);
 
@@ -22,16 +23,24 @@ static void AuctionWithMultipleBids()
     var client2 = new Client("Cliente 2", auctionTest);
     var client3 = new Client("Cliente 3", auctionTest);
 
+
+    auctionTest.StartAuction();
+
     client1.Auction.ReceiveBid(client1, 1000);
     client2.Auction.ReceiveBid(client2, 1100);
     client3.Auction.ReceiveBid(client3, 500);
 
+    //act
+
     auctionTest.FinishAuction();
 
-    var expectedValue = 1100.0;
+    var expectedValue = 1100;
+
+    //assert
     var valueObtained = auctionTest.Winner.Value;
 
     VerifyAuction(expectedValue, valueObtained);
+
 
 }
 
@@ -43,6 +52,8 @@ static void AuctionWithOneBid()
 
     var client1 = new Client("Cliente 1", auctionTest);
 
+    auctionTest.StartAuction();
+
     client1.Auction.ReceiveBid(client1, 1000);
 
     auctionTest.FinishAuction();
@@ -50,10 +61,10 @@ static void AuctionWithOneBid()
     var expectedValue = 1000;
     var valueObtained = auctionTest.Winner.Value;
 
-    VerifyAuction(expectedValue, valueObtained);
+    VerifyAuction(expectedValue, valueObtained);            
 }
 
-AuctionWithOneBid();
 AuctionWithMultipleBids();
+AuctionWithOneBid();
 
 Console.ReadLine();
