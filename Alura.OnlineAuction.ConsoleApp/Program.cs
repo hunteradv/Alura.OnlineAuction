@@ -40,8 +40,6 @@ static void AuctionWithMultipleBids()
     var valueObtained = auctionTest.Winner.Value;
 
     VerifyAuction(expectedValue, valueObtained);
-
-
 }
 
 static void AuctionWithOneBid()
